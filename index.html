@@ -369,7 +369,19 @@
 <li><p>在cmd的my-blog根目录下，安装一个扩展，然后生成，部署：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:\my-blog&gt;npm install hexo-deployer-git --save</span><br><span class="line">E:\my-blog&gt;hexo g</span><br><span class="line">E:\my-blog&gt;hexo d</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>代写</p>
+<li><p>部署失败，原因是该md文件忘记关闭了。如果关闭后还是部署不成功，先hexo clean，再重复5中的步骤。如果还不成功的话可能就是md文件里面格式有问题。</p>
+<p><img src="部署错误.png" alt="部署失败"></p>
+</li>
+<li><p>重复5中步骤，部署成功。部署成功期间需要输入github的账号密码：</p>
+<p><img src="部署成功.png" alt="部署成功"></p>
+</li>
+<li><p>在github的博客中，保存的是html和css等内容，具体如下：</p>
+<p><img src="github中文件内容.png" alt="github中文件内容"></p>
+</li>
+<li><p>在发布的网址中显示，该过程可能有延时，需要等待几分钟：</p>
+<p><img src="在github.io中显示.png" alt="在github.io中显示"></p>
+</li>
+<li><p>完毕。</p>
 </li>
 </ol>
 
@@ -510,7 +522,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//方法三</span><br><span class="line">system(&quot;E:\\svn\\a.bat&quot;);</span><br></pre></td></tr></table></figure>
 <p><strong>注：</strong>bat文件路径要用双斜杠，单斜杠不对，因为C++中会将第一个斜杠当作转义字符。</p>
 <p>执行结果如下：</p>
-<p> <img src="/2018/08/09/dealWithBat/dealWithBat.png" alt="fileZilla.exe"></p>
+<p> <img src="dealWithBat.png" alt="fileZilla.exe"></p>
 <p>完毕。</p>
 
           
@@ -632,7 +644,7 @@
         
           
             <h1 id="AES加密"><a href="#AES加密" class="headerlink" title="AES加密"></a>AES加密</h1><p>Aes（Advanced Encryption Standard, 高级加密标准）加密是是最常见的对称加密算法，其加密解密具有相同的秘钥，具体加密流程如下：</p>
-<p><img src="/2018/08/09/AES加密/AES加密解密流程.png" alt="AES加密解密流程"></p>
+<p><img src="AES加密解密流程.png" alt="AES加密解密流程"></p>
 <p><strong>明文P：</strong>没有加密的数据。</p>
 <p><strong>密钥K：</strong>用来加密明文的密码（本文使用的是16个字节，128位）。</p>
 <p><strong>AES加密函数：</strong>设AES加密函数为E，则C = E（K, P）。</p>
@@ -676,7 +688,7 @@
 <li>轮密钥加及其逆变换。</li>
 <li>密钥扩展（16字节的整数倍）。</li>
 </ol>
-<p><img src="/2018/08/09/AES加密/AES加密解密详细过程.png" alt="AES加密解密详细过程"></p>
+<p><img src="AES加密解密详细过程.png" alt="AES加密解密详细过程"></p>
 <h3 id="字节代替"><a href="#字节代替" class="headerlink" title="字节代替"></a>字节代替</h3><p>AES定义了一个S盒和逆S盒，来对所有字节做16进制的映射，即将所有字节转换成十六进制在沙盒中对应的字节。</p>
 <h4 id="表1-S盒"><a href="#表1-S盒" class="headerlink" title="表1 S盒"></a>表1 S盒</h4><table>
 <thead>
