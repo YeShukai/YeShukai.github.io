@@ -232,6 +232,194 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/Hexo-github搭建个人博客/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Matin_Ye">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="my-blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/09/Hexo-github搭建个人博客/" itemprop="url">Hexo+github搭建个人博客</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-09T11:41:59+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Hexo-github搭建个人博客"><a href="#Hexo-github搭建个人博客" class="headerlink" title="Hexo + github搭建个人博客"></a>Hexo + github搭建个人博客</h1><p>最近学习了用Hexo + github搭建个人博客，遇到了一些坑，因此想写下来，防止以后再遇到类似的问题。话不多说，直接开始。</p>
+<h3 id="Hexo在本地Server中显示"><a href="#Hexo在本地Server中显示" class="headerlink" title="Hexo在本地Server中显示"></a>Hexo在本地Server中显示</h3><ol>
+<li><p>安装Hexo，前提是需要安装git和Node.js，详情可参考Hexo官方文档：</p>
+<p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
+</li>
+<li><p>Hexo安装好以后，下载typora并安装，该软件是一个MarkDown编辑器，可以直接编辑.md文件。</p>
+<p><a href="https://www.typora.io/" target="_blank" rel="noopener">https://www.typora.io/</a></p>
+</li>
+<li><p>在cmd下，创建新文件夹，并安装图片插件：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; E:\&gt;hexo init my-blog</span><br><span class="line">&gt; E:\&gt;cd my-blog</span><br><span class="line">&gt; E:\my-blog&gt;npm install</span><br><span class="line">&gt; E:\my-blog&gt;npm install https://github.com/CodeFalling/hexo-asset-image -- save</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><img src="生成的文件.png" alt="生成的文件"></p>
+</blockquote>
+</li>
+<li><p>其中，_config.yml是主要配置文件，Hexo官方文档中有详细介绍，本处不再重复。themes文件夹中是博客的主题（默认的为landscape），可以在网上下载，本文使用的为next，在cmd的站点根目录下输入即可下载：</p>
+<p>git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a> themes/next</p>
+</li>
+<li><p>在跟目录的_config.yml中，将theme的值修改为next：</p>
+<p><img src="主题设置.png" alt="主题设置"></p>
+</li>
+<li><p>打开theme文件夹，打开next，打开_config.yml（不是my-blog根目录下的那个，next根目录下也有一个该文件），找到Scheme，将scheme设置为Pisces（next有Muse、Mist、Pisces和Gemini四种样式，本文使用的是Pisces）：</p>
+<p><img src="修改next主题.png" alt="修改next主题"></p>
+</li>
+<li><p>在cmd下进入my-blog（即自己建的文件夹），使用<code>hexo n 文件名</code>创建新的md文件。进入<strong>source</strong>文件夹，在<strong>_post</strong>文件夹中，会生成新建的md文件以及与该md文件相同的文件夹，可以将md文件中用到的图片放入到该文件夹中，这样在部署到github时能正常显示这些图片：</p>
+<p><img src="创建新md文件.png" alt="创建新md文件"></p>
+</li>
+<li><p>使用typora编辑md文件，使用方法和word类似。这里想说的是插入图片时的问题，如果右键选择插入-&gt;图像，这种方法在部署的时候图片会显示不出来（编辑时能显示），该方法如下图所示：</p>
+<p>![默认插入图片方式]默认插入图片方式.png)</p>
+</li>
+<li><p>[]中为该图片在网页中显示的名称，此外，将<code>Hexo-github搭建个人博客.assets/</code>删除。此时图片在typora中不会显示，但在server或者github中能正常显示。格式如下图：</p>
+<p><img src="server或github中图片正常显示.png" alt="server或github中图片正常显示"></p>
+</li>
+<li><p>此外，还有一种图片显示方式：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img aaa.jpg aaa %&#125;</span><br></pre></td></tr></table></figure>
+<p>但本文在使用这种方式时，有时在server中能正常显示，有时在<code>hexo g</code>时会出现错误，如下图所示：</p>
+<p><img src="使用hexo g命令生成错误.png" alt="使用hexo g命令生成错误"></p>
+<ol start="11">
+<li><p>后将10中的图片显示方式换为9中的方式，再使用hexo g时，就能正常生成了。</p>
+</li>
+<li><p>生成博客，打开server，在浏览器中输入：<code>localhost:4000</code>显示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:\my-blog&gt;hexo clean</span><br><span class="line">E:\my-blog&gt;hexo g</span><br><span class="line">E:\my-blog&gt;hexo s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>server中显示画面：</p>
+<p><img src="server中显示.png" alt="server中显示"></p>
+</li>
+</ol>
+<p><strong>注：</strong>在source的_post文件夹中，新生成了后缀名为.assets文件夹，里面保存的是md文件中使用的图片，经过测试，将其删除不影响server中图片的正常显示。</p>
+<h2 id="部署到github中"><a href="#部署到github中" class="headerlink" title="部署到github中"></a>部署到github中</h2><ol>
+<li><p>在自己的github账号中，新建一个New repository，名称为：自己github名称.github.io：</p>
+<p><img src="新建github仓库.png" alt="新建github仓库"></p>
+</li>
+<li><p>向下拉到GitHub Pages处，设置published地址，theme，域名等。如果有自己域名，可以在Custom domain中设置，这样利用Hexo写的博客就能在自己域名中看到啦。本文使用的是github自带的，如下图所示：</p>
+<p><img src="发布网址.png" alt="发布网址"></p>
+</li>
+<li><p>在my-blog根目录中的_config.yml，修改deploy中的repository地址：</p>
+<p><img src="修改config中github地址.png" alt="修改config中github地址"></p>
+</li>
+<li><p>在3中，还有一种修改方式：<a href="mailto:`git@github.com" target="_blank" rel="noopener">`git@github.com</a>:YeShukai/YeShukai.github.io.git`，但本文利用该方式部署时没成功。</p>
+</li>
+<li><p>在cmd的my-blog根目录下，安装一个扩展，然后生成，部署：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:\my-blog&gt;npm install hexo-deployer-git --save</span><br><span class="line">E:\my-blog&gt;hexo g</span><br><span class="line">E:\my-blog&gt;hexo d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代写</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/dealWithBat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -322,7 +510,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//方法三</span><br><span class="line">system(&quot;E:\\svn\\a.bat&quot;);</span><br></pre></td></tr></table></figure>
 <p><strong>注：</strong>bat文件路径要用双斜杠，单斜杠不对，因为C++中会将第一个斜杠当作转义字符。</p>
 <p>执行结果如下：</p>
-<p> <img src="dealWithBat.png" alt="fileZilla.exe"></p>
+<p> <img src="/2018/08/09/dealWithBat/dealWithBat.png" alt="fileZilla.exe"></p>
 <p>完毕。</p>
 
           
@@ -444,7 +632,7 @@
         
           
             <h1 id="AES加密"><a href="#AES加密" class="headerlink" title="AES加密"></a>AES加密</h1><p>Aes（Advanced Encryption Standard, 高级加密标准）加密是是最常见的对称加密算法，其加密解密具有相同的秘钥，具体加密流程如下：</p>
-<p><img src="AES加密解密流程.png" alt="AES加密解密流程"></p>
+<p><img src="/2018/08/09/AES加密/AES加密解密流程.png" alt="AES加密解密流程"></p>
 <p><strong>明文P：</strong>没有加密的数据。</p>
 <p><strong>密钥K：</strong>用来加密明文的密码（本文使用的是16个字节，128位）。</p>
 <p><strong>AES加密函数：</strong>设AES加密函数为E，则C = E（K, P）。</p>
@@ -488,7 +676,7 @@
 <li>轮密钥加及其逆变换。</li>
 <li>密钥扩展（16字节的整数倍）。</li>
 </ol>
-<p><img src="AES加密解密详细过程.png" alt="AES加密解密详细过程"></p>
+<p><img src="/2018/08/09/AES加密/AES加密解密详细过程.png" alt="AES加密解密详细过程"></p>
 <h3 id="字节代替"><a href="#字节代替" class="headerlink" title="字节代替"></a>字节代替</h3><p>AES定义了一个S盒和逆S盒，来对所有字节做16进制的映射，即将所有字节转换成十六进制在沙盒中对应的字节。</p>
 <h4 id="表1-S盒"><a href="#表1-S盒" class="headerlink" title="表1 S盒"></a>表1 S盒</h4><table>
 <thead>
@@ -1264,7 +1452,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
